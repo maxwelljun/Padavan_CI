@@ -104,7 +104,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: hendrikmuhs/ccache-action@v1.2.18
-    - uses: Bonnie2980/variable-mapper@master
+    - uses: Bonnie2980/variable-mapper@main
       id: export
       with:
         key: "${{ github.event.inputs.target }}"
@@ -538,7 +538,7 @@ jobs:
         ./transfer anon --no-progress ${FIRMWARE} 2>&1 | tee anonfile.log
         echo "::warning file=anonfile.com::$(cat anonfile.log | grep -o -E "https?://[a-zA-Z0-9\.\/_&=@$%?~#-]*")"
     - name: Remove obsolete firmwares on artifacts
-      uses: Bonnie2980/gha-remove-artifacts@master
+      uses: Bonnie2980/gha-remove-artifacts@main
       if: env.STATUS == 'success'
       with:
         age: '1 day'
